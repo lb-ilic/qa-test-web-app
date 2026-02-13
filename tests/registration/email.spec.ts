@@ -27,8 +27,9 @@ test.describe( 'Registration - Email', () => {
         await expect( page ).not.toHaveURL( REGISTRATION_SUCCESSFUL_URL );
     } );
 
-    for ( const validEmail of validEmailFormats ) {
+    for ( let validEmail of validEmailFormats ) {
         test( `TC-009 : Valid email address ${ validEmail } is accepted`, async ( { page } ) => {
+            validEmail = `${ Date.now() }${ validEmail }`;
             const validUser = createUser( { email: validEmail } );
 
             await registrationPage.register( validUser );

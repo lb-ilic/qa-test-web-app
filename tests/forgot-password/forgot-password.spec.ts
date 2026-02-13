@@ -25,7 +25,6 @@ test( 'TC-039 : Valid error message is displayed after registered user submits t
     await registrationPage.register( validUser );
 
     await forgotPasswordPage.open();
-
     await forgotPasswordPage.resetPassword( {
         email: validUser.email,
         question: VALID_SECURITY_QUESTION,
