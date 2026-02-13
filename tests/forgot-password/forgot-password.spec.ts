@@ -74,12 +74,7 @@ test.describe( 'Forgot Password', () => {
     } );
 
     for ( const invalidEmail of invalidEmailFormats ) {
-        test( `TC-043 : Invalid email address ${ invalidEmail } is rejected`, {
-            annotation: {
-                type: 'bug',
-                description: 'Success message displayed for invalid email on Forgot Password Page'
-            }
-        }, async ( { page } ) => {
+        test( `TC-043 : Invalid email address ${ invalidEmail } is rejected`, async ( { page } ) => {
             await forgotPasswordPage.resetPassword( {
                 email: invalidEmail,
                 question: VALID_SECURITY_QUESTION,
@@ -91,12 +86,7 @@ test.describe( 'Forgot Password', () => {
         } );
     }
 
-    test( `TC-044 : Security question is required`, {
-        annotation: {
-            type: 'bug',
-            description: 'Security Question is not required'
-        }
-    }, async ( { page } ) => {
+    test( `TC-044 : Security question is required`, async ( { page } ) => {
         await forgotPasswordPage.resetPassword( {
             email: validEmail,
             answer: VALID_SECURITY_ANSWER
@@ -107,12 +97,7 @@ test.describe( 'Forgot Password', () => {
         await expect( forgotPasswordPage.forgotPasswordMessage ).not.toHaveText( RESET_PASSWORD_EMAIL_SENT );
     } );
 
-    test( `TC-045 : Security answer is required`, {
-        annotation: {
-            type: 'bug',
-            description: 'Security Answer is not required'
-        }
-    }, async ( { page } ) => {
+    test( `TC-045 : Security answer is required`, async ( { page } ) => {
         await forgotPasswordPage.resetPassword( {
             email: validEmail,
             question: VALID_SECURITY_QUESTION
